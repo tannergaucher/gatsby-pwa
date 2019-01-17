@@ -7,14 +7,12 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <h1>Just Press Play</h1>
-    <p>Share a mixtape with a friend</p>
+    <p>Share a mixtape like it's the 90's</p>
+    <form>
+      <h2>Make a mix</h2>
+      <h4>Sign In With Spotify</h4>
+    </form>
   </Layout>
 )
 
 export default IndexPage
-
-{
-  /* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-  <Image />
-</div> */
-}

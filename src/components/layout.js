@@ -1,9 +1,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-import Header from './header'
 import './layout.css'
+import Appbar from '../components/Appbar'
+
+const theme = {}
+
+const GlobalStyle = createGlobalStyle`
+ @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+ 
+ body {
+    background: #141414;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+  }
+`
+
+const StyledBody = styled.div`
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    'content'
+    'appbar';
+  grid-template-rows: 1fr auto;
+
+  @media (min-width: 750px) {
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      'appbar'
+      'content';
+  }
+`
+
+const Content = styled.div`
+  grid-area: content;
+  padding: 1em;
+`
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -17,24 +51,13 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          {children}
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        </div>
-      </>
+      <ThemeProvider theme={theme}>
+        <StyledBody>
+          <GlobalStyle />
+          <Content>{children}</Content>
+          <Appbar />
+        </StyledBody>
+      </ThemeProvider>
     )}
   />
 )
