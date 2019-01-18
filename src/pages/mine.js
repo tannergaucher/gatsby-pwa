@@ -4,8 +4,6 @@ import Img from 'gatsby-image'
 import Layout from '../components/layout'
 
 const MinePage = ({ data }) => {
-  console.log(Img)
-  console.log(data)
   const { edges } = data.allImageSharp
   return (
     <Layout>

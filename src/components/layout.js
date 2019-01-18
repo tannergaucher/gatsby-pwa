@@ -25,13 +25,6 @@ const StyledBody = styled.div`
     'content'
     'appbar';
   grid-template-rows: 1fr auto;
-
-  @media (min-width: 750px) {
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-      'appbar'
-      'content';
-  }
 `
 
 const Content = styled.div`
