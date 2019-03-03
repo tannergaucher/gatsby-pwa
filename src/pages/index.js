@@ -1,14 +1,20 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import styled from 'styled-components'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
+const Styled = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Just Press Play</h1>
-    <form>{/* <h2>Make a mix</h2>
-      <h4>Sign In With Spotify</h4> */}</form>
+    <Styled>
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <h1>Hello Gatsby PWA</h1>
+    </Styled>
   </Layout>
 )
 

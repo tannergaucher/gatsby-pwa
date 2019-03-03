@@ -1,20 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-import './layout.css'
-import Appbar from '../components/Appbar'
+import Bar from './Bar'
 
 const theme = {}
 
-const GlobalStyle = createGlobalStyle`
- @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
- 
+const GlobalStyle = createGlobalStyle` 
  body {
+    padding: 0;
+    margin: 0;
     background: #141414;
     color: white;
-    font-family: 'Roboto Mono', monospace;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: calc(17px + 0.3vw);
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* remove bounce effect from browser for more native app feel */
+    overscroll-behavior: none;
   }
 `
 
@@ -27,32 +30,19 @@ const StyledBody = styled.div`
   grid-template-rows: 1fr auto;
 `
 
-const Content = styled.div`
+const Content = styled.main`
   grid-area: content;
   padding: 1em;
 `
 
 const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
-      <ThemeProvider theme={theme}>
-        <StyledBody>
-          <GlobalStyle />
-          <Content>{children}</Content>
-          <Appbar />
-        </StyledBody>
-      </ThemeProvider>
-    )}
-  />
+  <ThemeProvider theme={theme}>
+    <StyledBody>
+      <GlobalStyle />
+      <Content>{children}</Content>
+      <Bar />
+    </StyledBody>
+  </ThemeProvider>
 )
 
 Layout.propTypes = {
