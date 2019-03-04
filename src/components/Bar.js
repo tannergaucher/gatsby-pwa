@@ -18,8 +18,8 @@ const Styled = styled.div`
 const Bar = () => (
   <Styled>
     <Link to="/">Home</Link>
-    <Link to="/">Content</Link>
-    <Link to="/me">Profile</Link>
+    <Link to="/about">About</Link>
+    <Link to="/features">Features</Link>
   </Styled>
 )
 
